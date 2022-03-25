@@ -1,8 +1,12 @@
 <script lang="ts">
-  import { P2P } from "./utils/p2p";
+  import { initPriceOracle } from "./stores/priceOracle";
+
   export let name: string;
 
-  P2P().then(console.log);
+  // subscribe to price oracle
+  // subscribe to public room
+
+  initPriceOracle();
 </script>
 
 <main>
