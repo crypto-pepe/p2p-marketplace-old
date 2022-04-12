@@ -62,8 +62,3 @@ a {
 ul {
   list-style: none;
 }
-
-#error-loading {
-  display: grid;
-  row-gap: 10px;
-}
