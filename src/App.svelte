@@ -3,12 +3,29 @@
 
   export let name: string;
 
+  const onFinishLoading = async () => {
+    try {
+      throw new Error()
+      const loader = document.getElementById("full-screen");
+      loader.style.opacity = "0";
+      loader.style.visibility = "hidden";
+    } catch (err) {
+      const loader = document.getElementById("loader");
+      const errorLoading = document.getElementById("error-loading");
+      loader.style.opacity = "0";
+      loader.style.visibility = "hidden";
+      errorLoading.style.opacity = "1";
+      errorLoading.style.visibility = "visible";
+    }
+  };
+
   // subscribe to price oracle
   // subscribe to public room
 
   initPriceOracle();
 </script>
 
+<svelte:window on:load={onFinishLoading} />
 <main>
   <h1>Hello {name}!</h1>
   <p>
