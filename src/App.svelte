@@ -1,7 +1,5 @@
 <script lang="ts">
-  import { initPriceOracle } from "./stores/priceOracle";
-
-  export let name: string;
+  import { initPriceOracle } from "./stores/oracle";
 
   // subscribe to price oracle
   // subscribe to public room
@@ -10,7 +8,7 @@
 </script>
 
 <main>
-  <h1>Hello {name}!</h1>
+  <h1>Hello!</h1>
   <p>
     Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn
     how to build Svelte apps.
