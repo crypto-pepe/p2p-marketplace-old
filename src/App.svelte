@@ -1,41 +1,23 @@
 <script lang="ts">
-  import { stringify } from "querystring";
   import { prices, initPriceOracle } from "./stores/oracle";
+  import Footer from "./components/footer.svelte";
+
+  const onFinishLoading = async () => {
+    const loader = document.getElementById("full-screen");
+    loader.style.opacity = "0";
+    loader.style.visibility = "hidden";
+  };
 
   initPriceOracle();
-  // subscribe to price oracle
-  // subscribe to public room
 </script>
 
+<svelte:window on:load={onFinishLoading} />
 <main>
-  <h1>Hello!</h1>
   {Object.keys($prices)
     .map((ticker) => `${ticker} = ${$prices[ticker].price}`)
     .join(" | ")}
-  <p>
-    Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn
-    how to build Svelte apps.
-  </p>
 </main>
+<Footer />
 
 <style>
-  main {
-    text-align: center;
-    padding: 1em;
-    max-width: 240px;
-    margin: 0 auto;
-  }
-
-  h1 {
-    color: #ff3e00;
-    text-transform: uppercase;
-    font-size: 4em;
-    font-weight: 100;
-  }
-
-  @media (min-width: 640px) {
-    main {
-      max-width: none;
-    }
-  }
 </style>
