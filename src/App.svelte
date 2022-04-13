@@ -1,14 +1,17 @@
 <script lang="ts">
-  import { initPriceOracle } from "./stores/oracle";
-
-  // subscribe to price oracle
-  // subscribe to public room
+  import { stringify } from "querystring";
+  import { prices, initPriceOracle } from "./stores/oracle";
 
   initPriceOracle();
+  // subscribe to price oracle
+  // subscribe to public room
 </script>
 
 <main>
   <h1>Hello!</h1>
+  {Object.keys($prices)
+    .map((ticker) => `${ticker} = ${$prices[ticker].price}`)
+    .join(" | ")}
   <p>
     Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn
     how to build Svelte apps.

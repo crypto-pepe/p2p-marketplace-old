@@ -25,7 +25,6 @@ const defaultConfig: Libp2pOptions = {
     },
     pubsub: {
       enabled: true,
-      canRelayMessage: true,
       emitSelf: false,
       messageProcessingConcurrency: 10,
     },
