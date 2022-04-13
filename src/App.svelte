@@ -1,7 +1,10 @@
 <script lang="ts">
+  import Router from "svelte-spa-router";
   import Navbar from "./components/Navbar.svelte";
   import Footer from "./components/Footer.svelte";
   import { initPriceOracle } from "./stores/priceOracle";
+  import Marketplace from "./routes/Marketplace.svelte";
+  import Messages from "./routes/Messages.svelte";
 
   // export let name: string;
 
@@ -11,6 +14,17 @@
     loader.style.visibility = "hidden";
   };
 
+  const routes = {
+    "/": Marketplace,
+    "/messages": Messages,
+  };
+
+  const navLinks = [
+    { ref: "/", name: "Marketplace" },
+    { ref: "/messages", name: "Messages" },
+    { ref: "/faq", name: "FAQ" },
+  ];
+
   // subscribe to price oracle
   // subscribe to public room
 
@@ -19,8 +33,10 @@
 
 <svelte:window on:load={onFinishLoading} />
 <div class="app">
-  <Navbar />
-  <main>a</main>
+  <Navbar routes={navLinks} />
+  <main>
+    <Router {routes} />
+  </main>
   <Footer />
 </div>
 
