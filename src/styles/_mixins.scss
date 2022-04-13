@@ -1,0 +1,17 @@
+@mixin typographyDecoration() {
+  // &.default {
+  //   color: $secondary;
+  // }
+
+  // &.warning {
+  //   color: $warning;
+  // }
+
+  // &.danger {
+  //   color: $danger;
+  // }
+
+  &.secondary {
+    color: rgba($gray, 0.7);
+  }
+}
