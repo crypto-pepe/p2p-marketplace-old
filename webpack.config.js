@@ -1,8 +1,10 @@
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const { GitRevisionPlugin } = require("git-revision-webpack-plugin");
 const path = require("path");
 const webpack = require("webpack");
 const sveltePreprocess = require("svelte-preprocess");
 
+const gitRevisionPlugin = new GitRevisionPlugin();
 const mode = process.env.NODE_ENV || "development";
 const prod = mode === "production";
 
@@ -75,6 +77,10 @@ module.exports = {
     }),
     new webpack.ProvidePlugin({
       process: "process/browser",
+    }),
+    gitRevisionPlugin,
+    new webpack.DefinePlugin({
+      VERSION: JSON.stringify(gitRevisionPlugin.version()),
     }),
     // new webpack.NormalModuleReplacementPlugin(nodeProtocolRegex, (resource) => {
     //   resource.request = resource.request.replace(nodeProtocolRegex, "");
