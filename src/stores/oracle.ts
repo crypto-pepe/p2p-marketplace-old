@@ -24,4 +24,14 @@ export async function initPriceOracle() {
     console.log(Prices.decode(msg.data));
   });
   p2pInstanse.pubsub.subscribe(PRICE_ORACLE_TOPIC);
+
+  p2pInstanse.on("peer:discovery", (peerId) => {
+    console.log("Discovered:", peerId.toB58String());
+  });
+  p2pInstanse.connectionManager.on("peer:connect", (connection) => {
+    console.log(
+      "Connection established to:",
+      connection.remotePeer.toB58String()
+    );
+  });
 }
