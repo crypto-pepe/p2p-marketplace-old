@@ -1,5 +1,6 @@
 <script lang="ts">
-  import Footer from "./components/footer.svelte";
+  import Navbar from "./components/Navbar.svelte";
+  import Footer from "./components/Footer.svelte";
   import { initPriceOracle } from "./stores/priceOracle";
 
   // export let name: string;
@@ -17,8 +18,17 @@
 </script>
 
 <svelte:window on:load={onFinishLoading} />
-<main />
-<Footer />
+<div class="app">
+  <Navbar />
+  <main>a</main>
+  <Footer />
+</div>
 
-<style>
+<style lang="scss">
+  .app {
+    display: grid;
+    grid-template-rows: min-content 1fr min-content;
+    row-gap: 20px;
+    min-height: 100vh;
+  }
 </style>
