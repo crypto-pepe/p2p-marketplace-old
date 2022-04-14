@@ -5,16 +5,13 @@ import WebRTCStar from "libp2p-webrtc-star";
 import MPLEX from "libp2p-mplex";
 import { NOISE } from "libp2p-noise";
 import GossipSub from "libp2p-gossipsub";
+import type { P2PConfig } from "./config";
 
 export type P2P = Libp2p & EventEmitter;
 
 const defaultConfig: Libp2pOptions = {
   addresses: {
-    listen: [
-      "/dns4/wrtc-star1.par.dwebops.pub/tcp/443/wss/p2p-webrtc-star",
-      "/dns4/wrtc-star2.sjc.dwebops.pub/tcp/443/wss/p2p-webrtc-star",
-      "/dns4/shrouded-shelf-54137.herokuapp.com/tcp/443/wss/p2p-webrtc-star",
-    ],
+    listen: [],
   },
   modules: {
     transport: [WebSockets, WebRTCStar],
@@ -28,16 +25,20 @@ const defaultConfig: Libp2pOptions = {
     },
     pubsub: {
       enabled: true,
-      emitSelf: true,
+      emitSelf: false,
+      messageProcessingConcurrency: 10,
     },
   },
 };
 
 let instance: P2P;
 
-export const p2p = async (): Promise<P2P> => {
+export const p2p = async (config: P2PConfig): Promise<P2P> => {
   if (!instance) {
-    instance = await Libp2p.create(defaultConfig);
+    instance = await Libp2p.create({
+      ...defaultConfig,
+      addresses: { listen: config.addresses },
+    });
     await instance.start();
   }
 

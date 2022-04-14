@@ -1,12 +1,10 @@
 <script lang="ts">
+  import { prices, initPriceOracle } from "./stores/oracle";
   import Router from "svelte-spa-router";
   import Navbar from "./components/Navbar.svelte";
   import Footer from "./components/Footer.svelte";
-  import { initPriceOracle } from "./stores/priceOracle";
   import Marketplace from "./routes/Marketplace.svelte";
   import Exchanges from "./routes/Exchanges.svelte";
-
-  // export let name: string;
 
   const onFinishLoading = async () => {
     const loader = document.getElementById("full-screen");
@@ -28,7 +26,7 @@
   // subscribe to price oracle
   // subscribe to public room
 
-  // initPriceOracle();
+  initPriceOracle();
 </script>
 
 <svelte:window on:load={onFinishLoading} />
@@ -36,6 +34,9 @@
   <Navbar routes={navLinks} />
   <main>
     <Router {routes} />
+    {Object.keys($prices)
+      .map((ticker) => `${ticker} = ${$prices[ticker].price}`)
+      .join(" | ")}
   </main>
   <Footer />
 </div>
