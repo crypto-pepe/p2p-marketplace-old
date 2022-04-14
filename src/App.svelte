@@ -4,7 +4,7 @@
   import Footer from "./components/Footer.svelte";
   import { initPriceOracle } from "./stores/priceOracle";
   import Marketplace from "./routes/Marketplace.svelte";
-  import Messages from "./routes/Messages.svelte";
+  import Exchanges from "./routes/Exchanges.svelte";
 
   // export let name: string;
 
@@ -16,12 +16,12 @@
 
   const routes = {
     "/": Marketplace,
-    "/messages": Messages,
+    "/exchanges": Exchanges,
   };
 
   const navLinks = [
     { ref: "/", name: "Marketplace" },
-    { ref: "/messages", name: "Messages" },
+    { ref: "/exchanges", name: "Exchanges" },
     { ref: "/faq", name: "FAQ" },
   ];
 
