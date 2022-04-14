@@ -46,11 +46,37 @@
         s1.setAttribute("crossorigin", "*");
         s0.parentNode.insertBefore(s1, s0);
       })();
+
+      Tawk_API.customStyle = {
+        visibility: {
+          //for desktop only
+          desktop: {
+            position: "br", // bottom-right
+            xOffset: 15, // 15px away from right
+            yOffset: 50, // 40px up from bottom
+          },
+          // for mobile only
+          mobile: {
+            xOffset: 5, // 5px away from left
+            yOffset: 50, // 50px up from bottom
+          },
+          // change settings of bubble if necessary
+          bubble: {
+            rotate: "0deg",
+            xOffset: -20,
+            yOffset: 0,
+          },
+        },
+      };
     </script>
     <!--End of Tawk.to Script-->
 
     <script defer src="/build/bundle.js"></script>
     <style>
+      .font-lato {
+        transform: translateY(-200px) !important;
+      }
+
       #full-screen {
         position: fixed;
         display: flex;
