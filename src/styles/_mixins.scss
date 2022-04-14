@@ -1,0 +1,6 @@
+@import "_colors.scss";
+@mixin typographyDecoration() {
+  &.secondary {
+    color: rgba($gray, 0.7);
+  }
+}

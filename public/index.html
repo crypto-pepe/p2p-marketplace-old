@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <!-- SEO -->
+    <title>Pepe2Pepe</title>
+    <meta name="theme-color" content="#fff" />
+    <meta name="title" content="Pepe2Pepe" />
+    <meta name="description" content="Pepe2Pepe - decentralize p2p trading." />
+    <meta name="author" content="PepeTeam" />
+    <meta
+      name="keywords"
+      content="p2p,token,decentralized,WAVES,ETH,BTC,ledger,waveskeeper,crypto"
+    />
+
+    <link rel="icon" type="image/png" href="/favicon.webp" />
+    <link rel="stylesheet" href="/build/bundle.css" />
+    <link rel="stylesheet" href="./global.css" />
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-7M2S9P4T53"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-7M2S9P4T53");
+    </script>
+
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+      var Tawk_API = Tawk_API || {},
+        Tawk_LoadStart = new Date();
+      (function () {
+        var s1 = document.createElement("script"),
+          s0 = document.getElementsByTagName("script")[0];
+        s1.async = true;
+        s1.src = "https://embed.tawk.to/61c4ec7180b2296cfdd3521d/1fnkjn750";
+        s1.charset = "UTF-8";
+        s1.setAttribute("crossorigin", "*");
+        s0.parentNode.insertBefore(s1, s0);
+      })();
+
+      Tawk_API.customStyle = {
+        visibility: {
+          //for desktop only
+          desktop: {
+            position: "br", // bottom-right
+            xOffset: 15, // 15px away from right
+            yOffset: 50, // 40px up from bottom
+          },
+          // for mobile only
+          mobile: {
+            xOffset: 5, // 5px away from left
+            yOffset: 50, // 50px up from bottom
+          },
+          // change settings of bubble if necessary
+          bubble: {
+            rotate: "0deg",
+            xOffset: -20,
+            yOffset: 0,
+          },
+        },
+      };
+    </script>
+    <!--End of Tawk.to Script-->
+
+    <script defer src="/build/bundle.js"></script>
+    <style>
+      .font-lato {
+        transform: translateY(-200px) !important;
+      }
+
+      #full-screen {
+        position: fixed;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-color: #fff !important;
+        z-index: 99;
+        transition: all 1s ease;
+      }
+
+      #loader {
+        animation: spin 1s linear infinite;
+        height: 10px;
+        width: 10px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin: -5px;
+        transform: translate(-50%, -50%);
+      }
+
+      @keyframes spin {
+        0% {
+          box-shadow: 0px -30px #2e3a59, 10px -30px #2e3a59, 20px -20px #2e3a59,
+            30px -10px #2e3a59, 30px 0px #2e3a59, 30px 10px #2e3a59,
+            20px 20px #2e3a59, 10px 30px #2e3a59, 0px 30px transparent,
+            -10px 30px transparent, -20px 20px transparent,
+            -30px 10px transparent, -30px 0px transparent,
+            -30px -10px transparent, -20px -20px transparent,
+            -10px -30px transparent;
+        }
+        6.25% {
+          box-shadow: 0px -30px transparent, 10px -30px #2e3a59,
+            20px -20px #2e3a59, 30px -10px #2e3a59, 30px 0px #2e3a59,
+            30px 10px #2e3a59, 20px 20px #2e3a59, 10px 30px #2e3a59,
+            0px 30px #2e3a59, -10px 30px transparent, -20px 20px transparent,
+            -30px 10px transparent, -30px 0px transparent,
+            -30px -10px transparent, -20px -20px transparent,
+            -10px -30px transparent;
+        }
+        12.5% {
+          box-shadow: 0px -30px transparent, 10px -30px transparent,
+            20px -20px #2e3a59, 30px -10px #2e3a59, 30px 0px #2e3a59,
+            30px 10px #2e3a59, 20px 20px #2e3a59, 10px 30px #2e3a59,
+            0px 30px #2e3a59, -10px 30px #2e3a59, -20px 20px transparent,
+            -30px 10px transparent, -30px 0px transparent,
+            -30px -10px transparent, -20px -20px transparent,
+            -10px -30px transparent;
+        }
+        18.75% {
+          box-shadow: 0px -30px transparent, 10px -30px transparent,
+            20px -20px transparent, 30px -10px #2e3a59, 30px 0px #2e3a59,
+            30px 10px #2e3a59, 20px 20px #2e3a59, 10px 30px #2e3a59,
+            0px 30px #2e3a59, -10px 30px #2e3a59, -20px 20px #2e3a59,
+            -30px 10px transparent, -30px 0px transparent,
+            -30px -10px transparent, -20px -20px transparent,
+            -10px -30px transparent;
+        }
+        25% {
+          box-shadow: 0px -30px transparent, 10px -30px transparent,
+            20px -20px transparent, 30px -10px transparent, 30px 0px #2e3a59,
+            30px 10px #2e3a59, 20px 20px #2e3a59, 10px 30px #2e3a59,
+            0px 30px #2e3a59, -10px 30px #2e3a59, -20px 20px #2e3a59,
+            -30px 10px #2e3a59, -30px 0px transparent, -30px -10px transparent,
+            -20px -20px transparent, -10px -30px transparent;
+        }
+        31.25% {
+          box-shadow: 0px -30px transparent, 10px -30px transparent,
+            20px -20px transparent, 30px -10px transparent, 30px 0px transparent,
+            30px 10px #2e3a59, 20px 20px #2e3a59, 10px 30px #2e3a59,
+            0px 30px #2e3a59, -10px 30px #2e3a59, -20px 20px #2e3a59,
+            -30px 10px #2e3a59, -30px 0px #2e3a59, -30px -10px transparent,
+            -20px -20px transparent, -10px -30px transparent;
+        }
+        37.5% {
+          box-shadow: 0px -30px transparent, 10px -30px transparent,
+            20px -20px transparent, 30px -10px transparent, 30px 0px transparent,
+            30px 10px transparent, 20px 20px #2e3a59, 10px 30px #2e3a59,
+            0px 30px #2e3a59, -10px 30px #2e3a59, -20px 20px #2e3a59,
+            -30px 10px #2e3a59, -30px 0px #2e3a59, -30px -10px #2e3a59,
+            -20px -20px transparent, -10px -30px transparent;
+        }
+        43.75% {
+          box-shadow: 0px -30px transparent, 10px -30px transparent,
+            20px -20px transparent, 30px -10px transparent, 30px 0px transparent,
+            30px 10px transparent, 20px 20px transparent, 10px 30px #2e3a59,
+            0px 30px #2e3a59, -10px 30px #2e3a59, -20px 20px #2e3a59,
+            -30px 10px #2e3a59, -30px 0px #2e3a59, -30px -10px #2e3a59,
+            -20px -20px #2e3a59, -10px -30px transparent;
+        }
+        50% {
+          box-shadow: 0px -30px transparent, 10px -30px transparent,
+            20px -20px transparent, 30px -10px transparent, 30px 0px transparent,
+            30px 10px transparent, 20px 20px transparent, 10px 30px transparent,
+            0px 30px #2e3a59, -10px 30px #2e3a59, -20px 20px #2e3a59,
+            -30px 10px #2e3a59, -30px 0px #2e3a59, -30px -10px #2e3a59,
+            -20px -20px #2e3a59, -10px -30px #2e3a59;
+        }
+        56.25% {
+          box-shadow: 0px -30px #2e3a59, 10px -30px transparent,
+            20px -20px transparent, 30px -10px transparent, 30px 0px transparent,
+            30px 10px transparent, 20px 20px transparent, 10px 30px transparent,
+            0px 30px transparent, -10px 30px #2e3a59, -20px 20px #2e3a59,
+            -30px 10px #2e3a59, -30px 0px #2e3a59, -30px -10px #2e3a59,
+            -20px -20px #2e3a59, -10px -30px #2e3a59;
+        }
+        62.5% {
+          box-shadow: 0px -30px #2e3a59, 10px -30px #2e3a59,
+            20px -20px transparent, 30px -10px transparent, 30px 0px transparent,
+            30px 10px transparent, 20px 20px transparent, 10px 30px transparent,
+            0px 30px transparent, -10px 30px transparent, -20px 20px #2e3a59,
+            -30px 10px #2e3a59, -30px 0px #2e3a59, -30px -10px #2e3a59,
+            -20px -20px #2e3a59, -10px -30px #2e3a59;
+        }
+        68.75% {
+          box-shadow: 0px -30px #2e3a59, 10px -30px #2e3a59, 20px -20px #2e3a59,
+            30px -10px transparent, 30px 0px transparent, 30px 10px transparent,
+            20px 20px transparent, 10px 30px transparent, 0px 30px transparent,
+            -10px 30px transparent, -20px 20px transparent, -30px 10px #2e3a59,
+            -30px 0px #2e3a59, -30px -10px #2e3a59, -20px -20px #2e3a59,
+            -10px -30px #2e3a59;
+        }
+        75% {
+          box-shadow: 0px -30px #2e3a59, 10px -30px #2e3a59, 20px -20px #2e3a59,
+            30px -10px #2e3a59, 30px 0px transparent, 30px 10px transparent,
+            20px 20px transparent, 10px 30px transparent, 0px 30px transparent,
+            -10px 30px transparent, -20px 20px transparent,
+            -30px 10px transparent, -30px 0px #2e3a59, -30px -10px #2e3a59,
+            -20px -20px #2e3a59, -10px -30px #2e3a59;
+        }
+        81.25% {
+          box-shadow: 0px -30px #2e3a59, 10px -30px #2e3a59, 20px -20px #2e3a59,
+            30px -10px #2e3a59, 30px 0px #2e3a59, 30px 10px transparent,
+            20px 20px transparent, 10px 30px transparent, 0px 30px transparent,
+            -10px 30px transparent, -20px 20px transparent,
+            -30px 10px transparent, -30px 0px transparent, -30px -10px #2e3a59,
+            -20px -20px #2e3a59, -10px -30px #2e3a59;
+        }
+        87.5% {
+          box-shadow: 0px -30px #2e3a59, 10px -30px #2e3a59, 20px -20px #2e3a59,
+            30px -10px #2e3a59, 30px 0px #2e3a59, 30px 10px #2e3a59,
+            20px 20px transparent, 10px 30px transparent, 0px 30px transparent,
+            -10px 30px transparent, -20px 20px transparent,
+            -30px 10px transparent, -30px 0px transparent,
+            -30px -10px transparent, -20px -20px #2e3a59, -10px -30px #2e3a59;
+        }
+        93.75% {
+          box-shadow: 0px -30px #2e3a59, 10px -30px #2e3a59, 20px -20px #2e3a59,
+            30px -10px #2e3a59, 30px 0px #2e3a59, 30px 10px #2e3a59,
+            20px 20px #2e3a59, 10px 30px transparent, 0px 30px transparent,
+            -10px 30px transparent, -20px 20px transparent,
+            -30px 10px transparent, -30px 0px transparent,
+            -30px -10px transparent, -20px -20px transparent,
+            -10px -30px #2e3a59;
+        }
+        100% {
+          box-shadow: 0px -30px #2e3a59, 10px -30px #2e3a59, 20px -20px #2e3a59,
+            30px -10px #2e3a59, 30px 0px #2e3a59, 30px 10px #2e3a59,
+            20px 20px #2e3a59, 10px 30px #2e3a59, 0px 30px transparent,
+            -10px 30px transparent, -20px 20px transparent,
+            -30px 10px transparent, -30px 0px transparent,
+            -30px -10px transparent, -20px -20px transparent,
+            -10px -30px transparent;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="full-screen">
+      <div id="loader" />
+    </div>
+    <noscript>You need to enable JavaScript to run this app</noscript>
+  </body>
+</html>

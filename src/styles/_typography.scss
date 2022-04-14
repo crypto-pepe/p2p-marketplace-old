@@ -1,0 +1,9 @@
+@import "_mixins.scss";
+
+.small {
+  @include typographyDecoration();
+}
+
+.small {
+  font-size: 12px;
+}
