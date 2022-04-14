@@ -81,6 +81,7 @@ module.exports = {
     gitRevisionPlugin,
     new webpack.DefinePlugin({
       VERSION: JSON.stringify(gitRevisionPlugin.version()),
+      COMMITHASH: JSON.stringify(gitRevisionPlugin.commithash()),
     }),
     // new webpack.NormalModuleReplacementPlugin(nodeProtocolRegex, (resource) => {
     //   resource.request = resource.request.replace(nodeProtocolRegex, "");

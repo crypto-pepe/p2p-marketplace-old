@@ -5,7 +5,9 @@
   import TwitterIcon from "./icons/TwitterIcon.svelte";
   import GithubIcon from "./icons/GithubIcon.svelte";
   import MatrixIcon from "./icons/MatrixIcon.svelte";
+</script>
 
+<script lang="ts">
   const SocialIconItems: {
     title: string;
     href: string;
@@ -43,7 +45,15 @@
   <footer class="footer ">
     <div class="footer__version">
       <span class="small secondary">
-        Version: {VERSION}
+        Version:
+        <a
+          class="footer__copyright-link"
+          href={`https://github.com/crypto-pepe/p2p-marketplace/tree/${COMMITHASH}`}
+          referrerpolicy="noopener noreferrer"
+          target="_blank"
+        >
+          {VERSION}
+        </a>
       </span>
     </div>
     <div class="footer__copyright small secondary">
