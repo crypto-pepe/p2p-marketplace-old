@@ -36,6 +36,7 @@
     "libp2p-noise": "^4.0.0",
     "libp2p-webrtc-star": "^0.25.0",
     "libp2p-websockets": "^0.16.2",
-    "node-sass": "^7.0.1"
+    "node-sass": "^7.0.1",
+    "svelte-spa-router": "^3.2.0"
   }
 }
