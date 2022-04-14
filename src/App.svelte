@@ -1,5 +1,6 @@
 <script lang="ts">
   import { prices, initPriceOracle } from "./stores/oracle";
+  import { wallet, connectWallet } from "./stores/wallet";
   import Footer from "./components/footer.svelte";
 
   const onFinishLoading = async () => {
@@ -8,6 +9,7 @@
     loader.style.visibility = "hidden";
   };
 
+  connectWallet("waveskeeper");
   initPriceOracle();
 </script>
 
@@ -16,6 +18,8 @@
   {Object.keys($prices)
     .map((ticker) => `${ticker} = ${$prices[ticker].price}`)
     .join(" | ")}
+
+  {JSON.stringify($wallet)}
 </main>
 <Footer />
 
