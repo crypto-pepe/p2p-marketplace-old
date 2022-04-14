@@ -1,5 +1,6 @@
 <script lang="ts">
   import { prices, initPriceOracle } from "./stores/oracle";
+  import { wallet, connectWallet } from "./stores/wallet";
   import Router from "svelte-spa-router";
   import Navbar from "./components/Navbar.svelte";
   import Footer from "./components/Footer.svelte";
@@ -26,6 +27,7 @@
   // subscribe to price oracle
   // subscribe to public room
 
+  connectWallet("waveskeeper");
   initPriceOracle();
 </script>
 
@@ -37,6 +39,8 @@
     {Object.keys($prices)
       .map((ticker) => `${ticker} = ${$prices[ticker].price}`)
       .join(" | ")}
+    
+    {JSON.stringify($wallet)}
   </main>
   <Footer />
 </div>
