@@ -19,9 +19,9 @@
   };
 
   const navLinks = [
-    { ref: "/", name: "Marketplace" },
-    { ref: "/exchanges", name: "Exchanges" },
-    { ref: "/faq", name: "FAQ" },
+    { ref: "/", name: "Marketplace", location: "local" },
+    { ref: "/exchanges", name: "Exchanges", location: "local" },
+    { ref: "https://pepe-team.tawk.help/", name: "FAQ", location: "global" },
   ];
 
   // subscribe to price oracle

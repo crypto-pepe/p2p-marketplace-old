@@ -5,10 +5,10 @@
 </script>
 
 <script lang="ts">
-  type RoutesType = { ref: string; name: string }[];
+  type RoutesType = { ref: string; name: string; location: string }[];
   export let routes: RoutesType = [];
 
-  let opened:boolean = false;
+  let opened: boolean = false;
 
   function handleBurgerClick() {
     opened = !opened;
@@ -35,7 +35,19 @@
               class="navbar__links-item"
               class:active={$location === route.ref}
             >
-              <a href={`#${route.ref}`} on:click={closeNavbar}>{route.name} </a>
+              {#if route.location === "local"}
+                <a href={`#${route.ref}`} on:click={closeNavbar}
+                  >{route.name}
+                </a>
+              {:else}
+                <a
+                  href={route.ref}
+                  target="_blank"
+                  referrerpolicy="noopener noreferrer"
+                  on:click={closeNavbar}
+                  >{route.name}
+                </a>
+              {/if}
             </li>
           {/each}
         </ul>
