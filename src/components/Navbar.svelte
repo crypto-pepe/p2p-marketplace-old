@@ -1,14 +1,37 @@
 <script lang="ts" context="module">
+  import type { Wallet } from "../stores/wallet";
+  import { wallet } from "../stores/wallet";
   import { location } from "svelte-spa-router";
   import Logo from "./navbar/Logo.svelte";
   import Button from "./Button.svelte";
+  import ConnectWalletModal from "./modal/ConnectWalletModal.svelte";
+
+  type RoutesType = { ref: string; name: string; location: string }[];
+
+  function addressPrune(address: string): string {
+    if (address.length > 8) {
+      return `${address.slice(0, 4)}...${address.slice(-4)}`;
+    }
+    return address;
+  }
+
+  function buttonDecorator(wallet: Wallet): {
+    title: string;
+    primary?: boolean;
+    secondary?: boolean;
+  } {
+    return wallet.isConnected
+      ? { title: addressPrune(wallet.address), secondary: true }
+      : { title: "Connect", primary: true };
+  }
 </script>
 
 <script lang="ts">
-  type RoutesType = { ref: string; name: string; location: string }[];
   export let routes: RoutesType = [];
 
   let opened: boolean = false;
+  let connectWalletModal: ConnectWalletModal;
+  $: buttonArgs = buttonDecorator($wallet);
 
   function handleBurgerClick() {
     opened = !opened;
@@ -52,9 +75,18 @@
           {/each}
         </ul>
         <div class="navbar-button">
-          <Button primary fluid>Connect</Button>
+          <Button
+            fluid
+            primary={buttonArgs.primary}
+            secondary={buttonArgs.secondary}
+            on:click={connectWalletModal.show}
+            on:click={closeNavbar}
+          >
+            {buttonArgs.title}
+          </Button>
         </div>
       </nav>
+      <ConnectWalletModal bind:this={connectWalletModal} />
     </div>
   </div>
 </header>
@@ -95,7 +127,7 @@
           font-size: 16px;
           line-height: 20px;
           font-weight: 300;
-          transition: all 0.3s ease-in-out;
+          transition: border-bottom 0.3s ease-in-out;
 
           &.active {
             border-bottom: 1px solid $primary;
@@ -181,10 +213,9 @@
         background-color: $white;
         border: 1px solid $secondary;
         visibility: hidden;
-        opacity: 0;
+        // opacity: 0;
         overflow-y: auto;
-        transition: visibility 0.2s ease-in-out, transform 0.2s ease-in-out,
-          opacity 0.2s ease-in-out;
+        transition: transform 0.3s ease-in-out;
         transform: translateX(15px);
 
         &__links {
@@ -204,6 +235,7 @@
         &.opened {
           visibility: visible;
           opacity: 1;
+          transition: transform 0.3s ease-in-out;
           transform: translateX(0px);
         }
       }
