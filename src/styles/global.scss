@@ -1,3 +1,7 @@
 @import "_colors.scss";
 @import "_container.scss";
 @import "_typography.scss";
+
+body {
+  color: $secondary;
+}

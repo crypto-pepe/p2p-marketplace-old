@@ -1,6 +1,7 @@
 <script lang="ts">
   export let primary: boolean = false;
   export let secondary: boolean = false;
+  export let light: boolean = false;
   export let fluid: boolean = false;
 </script>
 
@@ -8,6 +9,7 @@
   class="btn"
   class:primary
   class:secondary
+  class:light
   class:fluid
   on:click
   on:mouseenter
@@ -43,6 +45,16 @@
     &.secondary {
       color: $white;
       background-color: $secondary;
+    }
+
+    &.light {
+      border: 1px solid $secondary;
+      background-color: $white;
+
+      &:hover {
+        color: $white;
+        background-color: $secondary;
+      }
     }
 
     &.fluid {

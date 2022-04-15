@@ -1,5 +1,10 @@
 @import "_mixins.scss";
 
+h6 {
+  font-size: 20px;
+}
+
+h6,
 .small {
   @include typographyDecoration();
 }

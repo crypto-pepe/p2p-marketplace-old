@@ -103,7 +103,7 @@
   .header {
     position: relative;
     display: grid;
-    grid-template-columns: 16.6% 83.4%;
+    grid-template-columns: min-content 1fr;
     column-gap: 20px;
     align-items: center;
 
@@ -114,7 +114,6 @@
     .navbar {
       display: grid;
       grid-template-columns: 1fr 16.6%;
-
       &__links {
         display: grid;
         grid-template-columns: repeat(3, min-content);
@@ -213,7 +212,6 @@
         background-color: $white;
         border: 1px solid $secondary;
         visibility: hidden;
-        // opacity: 0;
         overflow-y: auto;
         transition: transform 0.3s ease-in-out;
         transform: translateX(15px);
@@ -234,7 +232,6 @@
 
         &.opened {
           visibility: visible;
-          opacity: 1;
           transition: transform 0.3s ease-in-out;
           transform: translateX(0px);
         }
