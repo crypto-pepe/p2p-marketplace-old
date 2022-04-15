@@ -26,7 +26,8 @@
       flex-direction: column;
 
       &-title {
-        margin-bottom: 7px;
+        // display: flex;
+        margin-bottom: 5px;
       }
     }
   }

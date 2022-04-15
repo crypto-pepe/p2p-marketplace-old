@@ -39,7 +39,7 @@
       .map((ticker) => `${ticker} = ${$prices[ticker].price}`)
       .join(" | ")}
 
-    {JSON.stringify($wallet)}
+    <!-- {JSON.stringify($wallet)} -->
   </main>
   <Footer />
 </div>

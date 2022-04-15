@@ -2,14 +2,13 @@
   import type { WalletType, ConnectionError } from "../../stores/wallet";
   import { wallet, connectWallet, disconnectWallet } from "../../stores/wallet";
   import { getWalletByType } from "../../wallet/helper";
+  // import { addressPrune } from "../../helpers/addressPrune";
   import Modal from "../Modal.svelte";
   import Account from "./connect-wallet-modal/Account.svelte";
   import Install from "./connect-wallet-modal/Install.svelte";
   import Connect from "./connect-wallet-modal/Connect.svelte";
   import IconHeader from "../IconHeader.svelte";
   import WavesIcon from "../icons/WavesIcon.svelte";
-
-  // import { ProviderIcons } from "../../helpers/providerIcons";
 
   type Step = "account" | "connect" | "connecting" | "wavesKeeperInstall";
   const TitleByStepMap: { [step in Step]: string } = {
@@ -60,21 +59,23 @@
   <div class="title" slot="title">
     {#if step === "account"}
       <IconHeader>
-        <svelte:component this={WavesIcon} slot="icon" size={60} />
-        <span slot="title">{$wallet.address}</span>
-        <!-- <Copiable
-          slot="title"
-          content={$wallet.address}
-          component="span"
-          weight="medium"
-          addressPrune
-        /> -->
-
-        <span slot="description" class="small">{$wallet.type}</span>
-        <!-- <Typography component="small" weight="medium" /> -->
+        <svelte:component this={WavesIcon} slot="icon" size={40} />
+        <div slot="title">
+          <div class="account-address">
+            <span class="account-address-left weight-normal">
+              {$wallet.address.slice(0, -4)}
+            </span>
+            <span class="account-address-right weight-normal">
+              {$wallet.address.slice(-4)}
+            </span>
+          </div>
+        </div>
+        <span slot="description" class="small weight-normal ">
+          {$wallet.type}
+        </span>
       </IconHeader>
     {:else}
-      <h6>{TitleByStepMap[step]}</h6>
+      <h6 class="weight-normal">{TitleByStepMap[step]}</h6>
     {/if}
   </div>
   <div class="content" slot="content">
@@ -92,4 +93,30 @@
 
 <style lang="scss">
   @import "../../styles/global.scss";
+
+  .title {
+    max-width: 265px;
+
+    &__description {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+  }
+
+  .content {
+    max-width: 300px;
+  }
+
+  .account-address {
+    display: flex;
+    flex-wrap: nowrap;
+
+    &-left {
+      max-width: min-content;
+      min-width: 60px;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+  }
 </style>

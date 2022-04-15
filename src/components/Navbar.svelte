@@ -2,18 +2,12 @@
   import type { Wallet } from "../stores/wallet";
   import { wallet } from "../stores/wallet";
   import { location } from "svelte-spa-router";
+  import { addressPrune } from "../helpers/addressPrune";
   import Logo from "./navbar/Logo.svelte";
   import Button from "./Button.svelte";
   import ConnectWalletModal from "./modal/ConnectWalletModal.svelte";
 
   type RoutesType = { ref: string; name: string; location: string }[];
-
-  function addressPrune(address: string): string {
-    if (address.length > 8) {
-      return `${address.slice(0, 4)}...${address.slice(-4)}`;
-    }
-    return address;
-  }
 
   function buttonDecorator(wallet: Wallet): {
     title: string;
@@ -21,7 +15,7 @@
     secondary?: boolean;
   } {
     return wallet.isConnected
-      ? { title: addressPrune(wallet.address), secondary: true }
+      ? { title: addressPrune(wallet.address, 4), secondary: true }
       : { title: "Connect", primary: true };
   }
 </script>
