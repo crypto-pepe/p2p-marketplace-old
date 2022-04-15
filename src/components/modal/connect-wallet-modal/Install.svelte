@@ -1,5 +1,5 @@
 <script lang="ts" context="module">
-  import { Button } from "../../Button.svelte";
+  import Button from "../../Button.svelte";
   import type { WalletType } from "../../../stores/wallet";
 
   const InstallByWallet: { [walletType in WalletType]: { href: string } } = {
