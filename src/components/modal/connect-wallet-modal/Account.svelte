@@ -8,5 +8,5 @@
 </script>
 
 <div>
-  <Button fluid light on:click={() => dispatch("logout")}>Disconnect</Button>
+  <Button fluid danger on:click={() => dispatch("logout")}>Disconnect</Button>
 </div>

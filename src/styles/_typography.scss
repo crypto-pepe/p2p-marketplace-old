@@ -9,6 +9,16 @@ h6,
   @include typographyDecoration();
 }
 
+.fs-16 {
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.fs-12 {
+  font-size: 12px;
+  line-height: 16px;
+}
+
 .small {
   font-size: 12px;
 }

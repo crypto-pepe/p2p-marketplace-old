@@ -2,7 +2,7 @@
   import type { WalletType, ConnectionError } from "../../stores/wallet";
   import { wallet, connectWallet, disconnectWallet } from "../../stores/wallet";
   import { getWalletByType } from "../../wallet/helper";
-  // import { addressPrune } from "../../helpers/addressPrune";
+  import { addressPrune } from "../../helpers/addressPrune";
   import Modal from "../Modal.svelte";
   import Account from "./connect-wallet-modal/Account.svelte";
   import Install from "./connect-wallet-modal/Install.svelte";
@@ -59,20 +59,13 @@
   <div class="title" slot="title">
     {#if step === "account"}
       <IconHeader>
-        <svelte:component this={WavesIcon} slot="icon" size={40} />
-        <div slot="title">
-          <div class="account-address">
-            <span class="account-address-left weight-normal">
-              {$wallet.address.slice(0, -4)}
-            </span>
-            <span class="account-address-right weight-normal">
-              {$wallet.address.slice(-4)}
-            </span>
-          </div>
+        <svelte:component this={WavesIcon} slot="icon" size={32} />
+        <div class="fs-16 weight-normal" slot="title">
+          {addressPrune($wallet.address, 6)}
         </div>
-        <span slot="description" class="small weight-normal ">
+        <div slot="description" class="fs-12 weight-light">
           {$wallet.type}
-        </span>
+        </div>
       </IconHeader>
     {:else}
       <h6 class="weight-normal">{TitleByStepMap[step]}</h6>
@@ -106,17 +99,5 @@
 
   .content {
     max-width: 300px;
-  }
-
-  .account-address {
-    display: flex;
-    flex-wrap: nowrap;
-
-    &-left {
-      max-width: min-content;
-      min-width: 60px;
-      text-overflow: ellipsis;
-      overflow: hidden;
-    }
   }
 </style>

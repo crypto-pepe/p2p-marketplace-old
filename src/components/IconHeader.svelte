@@ -18,17 +18,17 @@
   .icon-header {
     display: grid;
     grid-template-columns: min-content minmax(100px, auto);
-    grid-column-gap: 10px;
+    grid-column-gap: 8px;
     align-items: center;
 
     &__content {
       display: flex;
       flex-direction: column;
 
-      &-title {
-        // display: flex;
-        margin-bottom: 5px;
-      }
+      // &-title {
+      //   // display: flex;
+      //   margin-bottom: 5px;
+      // }
     }
   }
 </style>

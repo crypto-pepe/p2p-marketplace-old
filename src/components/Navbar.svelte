@@ -26,6 +26,7 @@
   let opened: boolean = false;
   let connectWalletModal: ConnectWalletModal;
   $: buttonArgs = buttonDecorator($wallet);
+  $: isConnected = $wallet.isConnected;
 
   function handleBurgerClick() {
     opened = !opened;
@@ -48,24 +49,37 @@
       <nav class="navbar" class:opened>
         <ul class="navbar__links">
           {#each routes as route}
-            <li
-              class="navbar__links-item"
-              class:active={$location === route.ref}
-            >
-              {#if route.location === "local"}
-                <a href={`#${route.ref}`} on:click={closeNavbar}
-                  >{route.name}
-                </a>
-              {:else}
-                <a
-                  href={route.ref}
-                  target="_blank"
-                  referrerpolicy="noopener noreferrer"
-                  on:click={closeNavbar}
-                  >{route.name}
-                </a>
+            {#if route.name === "Account" || route.name === "Exchanges"}
+              {#if isConnected}
+                <li
+                  class="navbar__links-item"
+                  class:active={$location === route.ref}
+                >
+                  <a href={`#${route.ref}`} on:click={closeNavbar}
+                    >{route.name}
+                  </a>
+                </li>
               {/if}
-            </li>
+            {:else}
+              <li
+                class="navbar__links-item"
+                class:active={$location === route.ref}
+              >
+                {#if route.location === "local"}
+                  <a href={`#${route.ref}`} on:click={closeNavbar}
+                    >{route.name}
+                  </a>
+                {:else}
+                  <a
+                    href={route.ref}
+                    target="_blank"
+                    referrerpolicy="noopener noreferrer"
+                    on:click={closeNavbar}
+                    >{route.name}
+                  </a>
+                {/if}
+              </li>
+            {/if}
           {/each}
         </ul>
         <div class="navbar-button">
@@ -110,7 +124,7 @@
       grid-template-columns: 1fr 16.6%;
       &__links {
         display: grid;
-        grid-template-columns: repeat(3, min-content);
+        grid-template-columns: repeat(5, min-content);
         column-gap: 20px;
         justify-content: center;
 

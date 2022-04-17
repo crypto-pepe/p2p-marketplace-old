@@ -20,7 +20,9 @@
 
   const navLinks = [
     { ref: "/", name: "Marketplace", location: "local" },
+    { ref: "/account", name: "Account", location: "local" },
     { ref: "/exchanges", name: "Exchanges", location: "local" },
+    { ref: "/stats", name: "Stats", location: "local" },
     { ref: "https://pepe-team.tawk.help/", name: "FAQ", location: "global" },
   ];
 

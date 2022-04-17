@@ -2,6 +2,7 @@
   export let primary: boolean = false;
   export let secondary: boolean = false;
   export let light: boolean = false;
+  export let danger: boolean = false;
   export let fluid: boolean = false;
 </script>
 
@@ -10,6 +11,7 @@
   class:primary
   class:secondary
   class:light
+  class:danger
   class:fluid
   on:click
   on:mouseenter
@@ -54,6 +56,16 @@
       &:hover {
         color: $white;
         background-color: $secondary;
+      }
+    }
+
+    &.danger {
+      border: 1px solid $danger;
+      background-color: $white;
+
+      &:hover {
+        color: $white;
+        background-color: $danger;
       }
     }
 
