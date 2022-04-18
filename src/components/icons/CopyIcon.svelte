@@ -1,0 +1,21 @@
+<script lang="ts">
+  export let size: number = 64;
+  export let color: string = "#4A4A4A";
+</script>
+
+<svg width={size} height={size} viewBox="0 0 18 18" fill="none">
+  <path
+    d="M15 5H7C5.89543 5 5 5.89543 5 7V15C5 16.1046 5.89543 17 7 17H15C16.1046 17 17 16.1046 17 15V7C17 5.89543 16.1046 5 15 5Z"
+    stroke={color}
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <path
+    d="M13 5V3C13 2.46957 12.7893 1.96086 12.4142 1.58579C12.0391 1.21071 11.5304 1 11 1H3C2.46957 1 1.96086 1.21071 1.58579 1.58579C1.21071 1.96086 1 2.46957 1 3V11C1 11.5304 1.21071 12.0391 1.58579 12.4142C1.96086 12.7893 2.46957 13 3 13H5"
+    stroke={color}
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg>

@@ -1,14 +1,32 @@
 <script lang="ts" context="module">
+  import type { Wallet } from "../stores/wallet";
+  import { wallet } from "../stores/wallet";
   import { location } from "svelte-spa-router";
+  import { addressPrune } from "../helpers/addressPrune";
   import Logo from "./navbar/Logo.svelte";
   import Button from "./Button.svelte";
+  import ConnectWalletModal from "./modal/ConnectWalletModal.svelte";
+
+  type RoutesType = { ref: string; name: string; location: string }[];
+
+  function buttonDecorator(wallet: Wallet): {
+    title: string;
+    primary?: boolean;
+    secondary?: boolean;
+  } {
+    return wallet.isConnected
+      ? { title: addressPrune(wallet.address, 4), secondary: true }
+      : { title: "Connect", primary: true };
+  }
 </script>
 
 <script lang="ts">
-  type RoutesType = { ref: string; name: string; location: string }[];
   export let routes: RoutesType = [];
 
   let opened: boolean = false;
+  let connectWalletModal: ConnectWalletModal;
+  $: buttonArgs = buttonDecorator($wallet);
+  $: isConnected = $wallet.isConnected;
 
   function handleBurgerClick() {
     opened = !opened;
@@ -31,30 +49,52 @@
       <nav class="navbar" class:opened>
         <ul class="navbar__links">
           {#each routes as route}
-            <li
-              class="navbar__links-item"
-              class:active={$location === route.ref}
-            >
-              {#if route.location === "local"}
-                <a href={`#${route.ref}`} on:click={closeNavbar}
-                  >{route.name}
-                </a>
-              {:else}
-                <a
-                  href={route.ref}
-                  target="_blank"
-                  referrerpolicy="noopener noreferrer"
-                  on:click={closeNavbar}
-                  >{route.name}
-                </a>
+            {#if route.name === "Account" || route.name === "Exchanges"}
+              {#if isConnected}
+                <li
+                  class="navbar__links-item"
+                  class:active={$location === route.ref}
+                >
+                  <a href={`#${route.ref}`} on:click={closeNavbar}
+                    >{route.name}
+                  </a>
+                </li>
               {/if}
-            </li>
+            {:else}
+              <li
+                class="navbar__links-item"
+                class:active={$location === route.ref}
+              >
+                {#if route.location === "local"}
+                  <a href={`#${route.ref}`} on:click={closeNavbar}
+                    >{route.name}
+                  </a>
+                {:else}
+                  <a
+                    href={route.ref}
+                    target="_blank"
+                    referrerpolicy="noopener noreferrer"
+                    on:click={closeNavbar}
+                    >{route.name}
+                  </a>
+                {/if}
+              </li>
+            {/if}
           {/each}
         </ul>
         <div class="navbar-button">
-          <Button primary fluid>Connect</Button>
+          <Button
+            fluid
+            primary={buttonArgs.primary}
+            secondary={buttonArgs.secondary}
+            on:click={connectWalletModal.show}
+            on:click={closeNavbar}
+          >
+            {buttonArgs.title}
+          </Button>
         </div>
       </nav>
+      <ConnectWalletModal bind:this={connectWalletModal} />
     </div>
   </div>
 </header>
@@ -71,7 +111,7 @@
   .header {
     position: relative;
     display: grid;
-    grid-template-columns: 16.6% 83.4%;
+    grid-template-columns: min-content 1fr;
     column-gap: 20px;
     align-items: center;
 
@@ -82,10 +122,9 @@
     .navbar {
       display: grid;
       grid-template-columns: 1fr 16.6%;
-
       &__links {
         display: grid;
-        grid-template-columns: repeat(3, min-content);
+        grid-template-columns: repeat(5, min-content);
         column-gap: 20px;
         justify-content: center;
 
@@ -95,7 +134,7 @@
           font-size: 16px;
           line-height: 20px;
           font-weight: 300;
-          transition: all 0.3s ease-in-out;
+          transition: border-bottom 0.3s ease-in-out;
 
           &.active {
             border-bottom: 1px solid $primary;
@@ -181,10 +220,8 @@
         background-color: $white;
         border: 1px solid $secondary;
         visibility: hidden;
-        opacity: 0;
         overflow-y: auto;
-        transition: visibility 0.2s ease-in-out, transform 0.2s ease-in-out,
-          opacity 0.2s ease-in-out;
+        transition: transform 0.3s ease-in-out;
         transform: translateX(15px);
 
         &__links {
@@ -203,7 +240,7 @@
 
         &.opened {
           visibility: visible;
-          opacity: 1;
+          transition: transform 0.3s ease-in-out;
           transform: translateX(0px);
         }
       }

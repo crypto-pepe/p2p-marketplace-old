@@ -3,4 +3,7 @@
   &.secondary {
     color: rgba($gray, 0.7);
   }
+  &.danger {
+    color: $danger;
+  }
 }

@@ -1,9 +1,48 @@
 @import "_mixins.scss";
 
+h6 {
+  font-size: 20px;
+}
+
+h6,
 .small {
   @include typographyDecoration();
 }
 
+.fs-16 {
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.fs-12 {
+  font-size: 12px;
+  line-height: 16px;
+}
+
 .small {
   font-size: 12px;
+}
+
+.weight-extra-light {
+  font-weight: 200;
+}
+
+.weight-light {
+  font-weight: 300;
+}
+
+.weight-normal {
+  font-weight: normal;
+}
+
+.weight-medium {
+  font-weight: 500;
+}
+
+.weight-semi-bold {
+  font-weight: 600;
+}
+
+.text-center {
+  text-align: center;
 }
