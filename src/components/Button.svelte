@@ -24,6 +24,7 @@
   @import "../styles/global.scss";
 
   .btn {
+    position: relative;
     padding: 6px 15px;
     border: none;
     color: $secondary;

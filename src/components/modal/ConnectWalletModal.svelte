@@ -23,6 +23,10 @@
   let modal: Modal;
   let step: Step = $wallet.isConnected ? "account" : "connect";
   let connectionError: ConnectionError | undefined;
+  let copied: boolean = false;
+  let checked: boolean = false;
+  let copiedTimer;
+  let checkedTimer;
 
   export function show() {
     connectionError = undefined;
@@ -47,6 +51,26 @@
     } else {
       step = "wavesKeeperInstall";
     }
+  }
+
+  function copyAddress() {
+    copied = false;
+    checked = false;
+    
+    navigator.clipboard.writeText($wallet.address).then(() => {
+      clearTimeout(copiedTimer);
+      clearTimeout(checkedTimer);
+      copied = true;
+      checkedTimer = setTimeout(() => {
+        checked = true;
+        clearTimeout(checkedTimer);
+      }, 100);
+      copiedTimer = setTimeout(() => {
+        copied = false;
+        checked = false;
+        clearTimeout(copiedTimer);
+      }, 2000);
+    });
   }
 
   async function disconnect(walletType: WalletType) {
@@ -75,7 +99,12 @@
     {#if step === "connect"}
       <Connect {connectionError} on:connect={(e) => connect(e.detail)} />
     {:else if step === "account"}
-      <Account on:logout={() => disconnect($wallet.type)} />
+      <Account
+        {copied}
+        {checked}
+        on:logout={() => disconnect($wallet.type)}
+        on:copy={() => copyAddress()}
+      />
     {:else if step === "connecting"}
       some text about waiting loader
     {:else if step === "wavesKeeperInstall"}
